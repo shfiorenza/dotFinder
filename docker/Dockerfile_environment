@@ -1,0 +1,28 @@
+FROM ubuntu:focal
+ENV DEBIAN_FRONTEND=noninteractive 
+WORKDIR /build
+RUN apt-get -qq update && apt-get install -qqy --no-install-recommends \
+        build-essential \
+        ca-certificates \
+        vim \
+        cmake \
+        wget \
+        unzip \
+        git \
+        curl \
+        htop \
+        pkg-config \
+        doxygen \
+        libgsl-dev \
+	    libgtk2.0-dev &&\
+    rm -rf ~/.cache
+RUN wget -O opencv.zip https://github.com/opencv/opencv/archive/4.x.zip &&\
+    unzip opencv.zip &&\
+    mv opencv-4.x opencv &&\
+    mkdir -p build &&\ 
+    cd build &&\
+    cmake ../opencv/ &&\
+    cmake --build . &&\
+    make install    
+RUN rm -rf /build
+ENTRYPOINT []
