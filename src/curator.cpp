@@ -123,12 +123,12 @@ void Curator::OutputData() {
   if (teams_[i_team_] == "Albus") {
     data_file.open("data.out");
     for (auto const &coords : dot_coords_) {
-      double x_pix{std::fabs(coords[0] * pixel_size_ - img_center[0])};
-      double y_pix{std::fabs(coords[1] * pixel_size_ - img_Center[1])};
+      double x_pix{std::fabs(coords[0] * pixel_size_ - img_center_[0])};
+      double y_pix{std::fabs(coords[1] * pixel_size_ - img_center_[1])};
       data_file << x_pix << x_pix;
     }
     printf("Distance to center (in mm) stored in data.out; unravel with dims = "
-           "n_dots x 2\n")
+           "n_dots x 2\n");
   } else if (teams_[i_team_] == "Bellatrix") {
     data_file.open("data.csv");
     data_file << "X (mm), Y (mm) \n";

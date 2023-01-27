@@ -75,7 +75,7 @@ elif $build_base; then
     docker build --no-cache -f docker/Dockerfile_environment -t shfiorenza/dotfinder_base:latest docker
 else
     echo "Initializing dotFinder docker container named 'dotfinder' (please wait...)"
-    docker run --rm -itd -v "${PWD}":/mnt --name "cylaks" shfiorenza/cylaks bash
+    docker run --rm -itd -v "${PWD}":/mnt --name "dotfinder" shfiorenza/dotfinder bash
     echo "Running dotFinder program in docker container. Data files will be output to local directory"
     echo "(Interactive launcher only; quick-launch syntax currently not supported w/ Docker)"
     echo ""
